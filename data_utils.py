@@ -243,8 +243,8 @@ def get_data_loaders(hp, verbose=True):
 
   client_loaders = [torch.utils.data.DataLoader(CustomImageDataset(x, y, transforms_train), 
                                                                 batch_size=hp['batch_size'], shuffle=True) for x, y in split]
-  train_loader = torch.utils.data.DataLoader(CustomImageDataset(x_train, y_train, transforms_eval), batch_size=100, shuffle=False)
-  test_loader  = torch.utils.data.DataLoader(CustomImageDataset(x_test, y_test, transforms_eval), batch_size=100, shuffle=False) 
+  train_loader = torch.utils.data.DataLoader(CustomImageDataset(x_train, y_train, transforms_eval), batch_size=64, shuffle=False)
+  test_loader  = torch.utils.data.DataLoader(CustomImageDataset(x_test, y_test, transforms_eval), batch_size=64, shuffle=False) 
 
   stats = {"split" : [x.shape[0] for x, y in split]}
 

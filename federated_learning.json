@@ -1,27 +1,23 @@
 { 
-
-
-
 "main" :
 [
 {
 	"dataset" : ["mnist"], 
 	"net" : ["logistic"],
 
-	"iterations" : [2000],
-
-	"n_clients" : [2000],
-	"participation_rate" : [0.5],
+	"iterations" : [1000],
+	"local_iterations": [10],
+	"n_clients" : [1000],
+	"participation_rate" : [0.01],
 	"classes_per_client" : [10],
-	"batch_size" : [1],
+	"batch_size" : [64],
 	"balancedness" : [1.0],	
 
 	"momentum" : [0.9],
 
+	"compression" : [["stc_up", {"p_up" : 0.01}]],
 
-	"compression" : [["none", {}]],
-
-	"log_frequency" : [30],
+	"log_frequency" : [1],
 	"log_path" : ["results/trash/"]
 }
 ]
