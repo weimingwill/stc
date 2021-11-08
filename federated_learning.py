@@ -79,8 +79,8 @@ def run_experiments(experiments):
       if xp.is_log_round(c_round):
         print("Experiment: {} ({}/{})".format(args.schedule, xp_count+1, len(experiments)))
         print("Evaluate...")
-        results_train = server.evaluate(max_samples=5000, loader=train_loader)
-        results_test = server.evaluate(max_samples=10000)
+        results_train = server.evaluate(max_samples=0, loader=train_loader)
+        results_test = server.evaluate(max_samples=500000)
         
         # Logging
         xp.log({'communication_round' : c_round, 'lr' : clients[0].optimizer.__dict__['param_groups'][0]['lr'],
@@ -141,4 +141,8 @@ def print_model(device):
 
 
 if __name__ == "__main__":
+  print("start training")
+  start_time = time.time()
   run_experiments(experiments)
+  print("end training")
+  print(f"training takes {time.time()-start_time:.4f}")
